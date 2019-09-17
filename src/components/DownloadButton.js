@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react"
 import { Subject, from } from "rxjs"
 import { switchMap, withLatestFrom, mergeMap, catchError } from "rxjs/operators"
 import { useSession } from "../context"
-import { withStyles } from "react-jss"
+import withStyles from "react-jss"
 import downloadIcon from "../resources/images/download.svg"
 
 const styles = {
