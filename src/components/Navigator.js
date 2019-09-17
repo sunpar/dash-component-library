@@ -48,7 +48,7 @@ const styles = {
 	navigator__tooltip_hidden: { display: "none" },
 }
 
-export default withStyles(styles)(({ positions, classes }) => {
+export default withStyles(styles)(({ positions, className, classes }) => {
 	const [selectedPosition, setSelectedPosition] = useState(0)
 	const [refPositions, setRefPositions] = useState([])
 
@@ -85,7 +85,7 @@ export default withStyles(styles)(({ positions, classes }) => {
 	const [tooltipPosition, setTooltipPosition] = useState(null)
 
 	return (
-		<div className={classNames("navigator", classes.navigator)}>
+		<div className={classNames("navigator", className, classes.navigator)}>
 			{positions.map(position => (
 				<a key={position.id} href={`#${position.anchor}`}>
 					<div

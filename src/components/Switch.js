@@ -1,6 +1,7 @@
 import React from "react"
 import { Switch as MUISwitch } from "@material-ui/core"
 import withStyles from "react-jss"
+import classNames from "classnames"
 
 const styles = {
 	switchBase: {
@@ -23,6 +24,7 @@ const Switch = ({
 	textRight,
 	valueRight,
 	state: [value, onChange],
+	className,
 	classes,
 }) => {
 	const { labels, deSelected, ...switchClasses } = classes
@@ -30,7 +32,7 @@ const Switch = ({
 		onChange(checked ? valueRight : valueLeft)
 
 	return (
-		<div className={labels}>
+		<div className={classNames(labels, className)}>
 			<span className={value !== valueLeft ? deSelected : ""}>{textLeft}</span>
 			<MUISwitch
 				classes={switchClasses}

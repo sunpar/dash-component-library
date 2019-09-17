@@ -21,7 +21,7 @@ const styles = {
 	},
 }
 
-export default withStyles(styles)(({ className, url, classes }) => {
+export default withStyles(styles)(({ url, className, classes }) => {
 	return (
 		<a
 			className={classNames("analyst-link", classes.analystLink, className)}

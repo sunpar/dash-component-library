@@ -4,6 +4,7 @@ import { switchMap, withLatestFrom, mergeMap, catchError } from "rxjs/operators"
 import { useSession } from "../context"
 import withStyles from "react-jss"
 import downloadIcon from "../resources/images/download.svg"
+import classNames from "classnames"
 
 const styles = {
 	downloadButton: {
@@ -20,7 +21,7 @@ const styles = {
 	},
 }
 
-export default withStyles(styles)(({ downloadIds, classes }) => {
+export default withStyles(styles)(({ downloadIds, className, classes }) => {
 	const {
 		rxq: { doc$ },
 	} = useSession()[0]
@@ -48,7 +49,7 @@ export default withStyles(styles)(({ downloadIds, classes }) => {
 
 	return (
 		<button
-			className={classes.downloadButton}
+			className={classNames(classes.downloadButton, className)}
 			onClick={() => download$.next(downloadIds)}
 		/>
 	)

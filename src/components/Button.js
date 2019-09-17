@@ -46,7 +46,7 @@ export default withStyles(styles)(
 		Icon = null,
 		size,
 		onClick = () => {},
-		className = "",
+		className,
 		classes,
 		children,
 	}) => {

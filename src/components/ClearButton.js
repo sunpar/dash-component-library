@@ -13,7 +13,7 @@ const styles = {
 	clearButton__refreshIcon: { width: "12px" },
 }
 
-export default withStyles(styles)(({ classes }) => {
+export default withStyles(styles)(({ className, classes }) => {
 	const {
 		rxq: { doc$ },
 	} = useSession()[0]
@@ -34,7 +34,7 @@ export default withStyles(styles)(({ classes }) => {
 	return (
 		<Button
 			theme="light"
-			className={classNames("clear-button", classes.clearButton)}
+			className={classNames("clear-button", className, classes.clearButton)}
 			Icon={
 				<img
 					className={classNames(

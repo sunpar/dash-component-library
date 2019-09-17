@@ -16,11 +16,13 @@ const styles = {
 }
 
 export default withStyles(styles)(
-	({ buttons, selectedButton, onChange, classes }) => {
+	({ buttons, selectedButton, onChange, className, classes }) => {
 		const onClick = onChange
 
 		return (
-			<div className={classNames("button-group", classes.buttonGroup)}>
+			<div
+				className={classNames("button-group", classes.buttonGroup, className)}
+			>
 				{buttons.map(button => (
 					<Button
 						key={button.name}
