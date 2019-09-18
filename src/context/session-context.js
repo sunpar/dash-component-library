@@ -3,7 +3,7 @@ import QdtComponents from "qdt-components"
 import uuidv4 from "uuid/v4"
 import { connectSession, qAskReplay, invalidations, qAsk } from "rxq"
 import { from } from "rxjs"
-import { shareReplay, concatMap, tap, mergeMap } from "rxjs/operators"
+import { shareReplay, concatMap, tap, mergeMap, filter } from "rxjs/operators"
 
 /** Convert the incoming qlik config to format supported by qdt */
 const qdtConfigGenerator = ({
