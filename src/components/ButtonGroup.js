@@ -16,7 +16,7 @@ const styles = {
 }
 
 export default withStyles(styles)(
-	({ buttons, selectedButton, onChange, className, classes }) => {
+	({ buttons, selectedButton, onChange, className, classes, size=false }) => {
 		const onClick = onChange
 
 		return (
@@ -34,7 +34,7 @@ export default withStyles(styles)(
 									button.name !== selectedButton,
 							}
 						)}
-						size="lg"
+						size={size}
 						theme={button.name === selectedButton ? "dark" : "light"}
 						onClick={() => onClick(button.name)}
 					>
