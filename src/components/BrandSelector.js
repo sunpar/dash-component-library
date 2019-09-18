@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react"
-import { useSession } from "../context"
+import { useSession } from "dash-component-library/context"
 import { qAskReplay, invalidations } from "rxq"
 import { Subject } from "rxjs"
 import { map, tap, withLatestFrom, switchMap } from "rxjs/operators"
 import withStyles from "react-jss"
 import classNames from "classnames"
-import { Dropdown } from "."
 import * as brandImages from "../resources/images/brands"
 
 const styles = {
@@ -36,14 +35,13 @@ const styles = {
 }
 
 export default withStyles(styles)(
-	({ DropdownButton, field, className, classes }) => {
+	({ field, setSelectedBrand = () => {}, className, classes }) => {
 		const {
 			rxq: { doc$ },
 		} = useSession()[0]
 
 		/** Get brand list */
 		const [brandList, setBrandList] = useState([])
-		const [currentSelection, setCurrentSelection] = useState(null)
 		const selectBrand$ = useRef(new Subject()).current
 		useEffect(() => {
 			const brandListObj$ = doc$.pipe(
@@ -75,8 +73,8 @@ export default withStyles(styles)(
 							brand => brand.selectionState === "S"
 						)
 						if (selectedBrand !== undefined)
-							setCurrentSelection(selectedBrand.code)
-						else setCurrentSelection(null)
+							setSelectedBrand(selectedBrand.code)
+						else setSelectedBrand(null)
 					})
 				)
 				.subscribe(setBrandList)
@@ -102,30 +100,22 @@ export default withStyles(styles)(
 		}, [doc$, selectBrand$])
 
 		return (
-			<Dropdown
-				DropdownButton={DropdownButton}
-				dropdownButtonChildren={`Brand${
-					currentSelection !== null ? `: ${currentSelection}` : ""
-				}`}
-				className={classNames(classes.brandDropdown, className)}
-			>
-				<div className={classNames(classes.brandDropdown__container)}>
-					{brandList.map(brand => (
-						<input
-							type="button"
-							key={brand.elemNumber}
-							className={classNames(classes.brandDropdown__input, {
-								[classes.brandDropdown__input_selected]:
-									brand.selectionState === "S",
-							})}
-							style={{
-								backgroundImage: `url(${brandImages[brand.code]})`,
-							}}
-							onClick={() => selectBrand$.next(brand.elemNumber)}
-						/>
-					))}
-				</div>
-			</Dropdown>
+			<div className={classNames(classes.brandDropdown__container, className)}>
+				{brandList.map(brand => (
+					<input
+						type="button"
+						key={brand.elemNumber}
+						className={classNames(classes.brandDropdown__input, {
+							[classes.brandDropdown__input_selected]:
+								brand.selectionState === "S",
+						})}
+						style={{
+							backgroundImage: `url(${brandImages[brand.code]})`,
+						}}
+						onClick={() => selectBrand$.next(brand.elemNumber)}
+					/>
+				))}
+			</div>
 		)
 	}
 )
