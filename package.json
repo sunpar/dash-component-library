@@ -1,34 +1,34 @@
 {
-	"name": "dash-component-library",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"copy-package": "mkdir -p dist && cp package.json dist/",
-		"build:cjs": "babel ./src --out-dir dist --ignore node_modules,dist --copy-files",
-		"bundle-dist": "node scripts/bundle-dist",
-		"build:dist": "npm run copy-package && npm run build:cjs && npm run bundle-dist"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"@material-ui/core": "^4.4.2",
-		"classnames": "^2.2.6",
-		"qdt-components": "^1.3.29",
-		"react-jss": "^8.6.1",
-		"rxjs": "^6.5.3",
-		"rxq": "^2.0.4"
-	},
-	"peerDependencies": {
-		"react": "^16.9.0",
-		"react-dom": "^16.9.0"
-	},
-	"devDependencies": {
-		"@babel/cli": "^7.6.0",
-		"@babel/core": "^7.6.0",
-		"@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-		"@babel/preset-env": "^7.6.0",
-		"@babel/preset-react": "^7.0.0"
-	}
+  "name": "dash-component-library",
+  "version": "0.0.2",
+  "description": "Component Library for Dash",
+  "main": "index.js",
+  "scripts": {
+    "copy-package": "mkdir -p dist && cp package.json dist/",
+    "build:cjs": "babel ./src --out-dir dist --ignore node_modules,dist --copy-files",
+    "bundle-dist": "node scripts/bundle-dist",
+    "build:dist": "npm run copy-package && npm run build:cjs && npm run bundle-dist"
+  },
+  "keywords": [],
+  "author": "Conde Nast Data Visualization",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.4.2",
+    "classnames": "^2.2.6",
+    "qdt-components": "^1.3.29",
+    "react-jss": "^8.6.1",
+    "rxjs": "^6.5.3",
+    "rxq": "^2.0.4"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0"
+  }
 }
